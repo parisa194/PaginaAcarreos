@@ -1,4 +1,4 @@
-const Tabla = ({ datos, onEditar, onEliminar }) => {
+const Tabla = ({ datos, onEditar, onEliminar, onFavoritos }) => {
     return (
         <div className="overflow-x-auto">
             <table className="min-w-full bg-white shadow-md rounded-xl">
@@ -34,6 +34,12 @@ const Tabla = ({ datos, onEditar, onEliminar }) => {
                                     className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                                 >
                                     Eliminar
+                                </button>
+                                <button
+                                onClick={() => onFavoritos(a)}
+                                className="bg-green-600 text-white px-2 py-1 rounded"
+                            >
+                                ⭐ Favorito
                                 </button>
                             </td>
                         </tr>

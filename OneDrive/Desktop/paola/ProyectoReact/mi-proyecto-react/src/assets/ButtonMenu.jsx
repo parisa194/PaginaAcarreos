@@ -1,21 +1,20 @@
 import React from "react";
-import "./ButtonMenu.css"; 
+import "./ButtonMenu.css";
 
 const ButtonMenu = () => {
-    const handleClick = (buttonName) => {
-        alert(`Has hecho clic en: ${buttonName}`);
-    };
-
     return (
         <div className="menu-container">
-            <button className="menu-button" onClick={() => handleClick("Inicio")}>
+            <button className="menu-button" onClick={() => window.open("/", "_blank")}>
                 Inicio
             </button>
-            <button className="menu-button" onClick={() => handleClick("Servicios")}>
-                Servicios
+            <button
+                className="menu-button"
+                onClick={() => window.open("/clientes-favoritos", "_blank")}
+            >
+                Clientes favoritos
             </button>
-            <button className="menu-button" onClick={() => handleClick("Contacto")}>
-                Contacto
+            <button className="menu-button" onClick={() => window.open("/conductores", "_blank")}>
+                Conductores
             </button>
         </div>
     );

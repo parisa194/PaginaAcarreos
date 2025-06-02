@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const Formulario = ({ agregarAcarreo, acarreo }) => {
+const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
     const [cliente, setCliente] = useState('');
     const [telefono, setTelefono] = useState('');
     const [origen, setOrigen] = useState('');
@@ -45,6 +45,16 @@ const Formulario = ({ agregarAcarreo, acarreo }) => {
             vehiculo,
             costo: parseFloat(costo),
         });
+    };
+
+    const manejarFavorito = () => {
+        if (!cliente || !telefono) {
+            return alert('Nombre y teléfono son requeridos para agregar a favoritos.');
+        }
+
+        if (agregarFavorito) {
+            agregarFavorito({ cliente, telefono });
+        }
     };
 
     return (
@@ -103,12 +113,27 @@ const Formulario = ({ agregarAcarreo, acarreo }) => {
                     onChange={(e) => setCosto(e.target.value)}
                 />
             </div>
-            <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-                {acarreo ? 'Actualizar' : 'Registrar'}
-            </button>
+
+            <div className="mt-4 flex gap-2">
+                <button
+                    type="submit"
+                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                >
+                    {acarreo ? 'Actualizar' : 'Registrar'}
+                </button>
+
+                {agregarFavorito && (
+                    <button
+                        type="button"
+                        onClick={manejarFavorito}
+                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                    >
+                        Favoritos
+                    </button>
+                )}
+            </div>
         </form>
     );
 };
 
 export default Formulario;
-

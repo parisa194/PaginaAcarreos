@@ -1,12 +1,15 @@
 .menu-container {
-    display: flex;
+    display: table-column;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 10px;
-    margin: 20px;
+
+
 }
 
 .menu-button {
-    background-color: #4caf50;
+    background-color: #131613;
     color: white;
     border: none;
     padding: 10px 20px;
