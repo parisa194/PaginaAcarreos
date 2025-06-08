@@ -21,6 +21,7 @@ const AppClientes = () => {
                         <tr className="bg-gray-200">
                             <th className="p-2">Cliente</th>
                             <th className="p-2">Teléfono</th>
+                            <th className='p-2'>Email</th>
                             <th className="p-2">Origen</th>
                             <th className="p-2">Destino</th>
                             <th className="p-2">Fecha</th>
@@ -33,6 +34,7 @@ const AppClientes = () => {
                             <tr key={index} className="text-center border-t">
                                 <td className="p-2">{f.cliente}</td>
                                 <td className="p-2">{f.telefono}</td>
+                                <td className="p-2">{f.email}</td>
                                 <td className="p-2">{f.origen}</td>
                                 <td className="p-2">{f.destino}</td>
                                 <td className="p-2">{f.fecha}</td>

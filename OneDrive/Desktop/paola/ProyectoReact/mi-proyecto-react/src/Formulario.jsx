@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
     const [cliente, setCliente] = useState('');
     const [telefono, setTelefono] = useState('');
+    const [email, setEmail] = useState('');
     const [origen, setOrigen] = useState('');
     const [destino, setDestino] = useState('');
     const [fecha, setFecha] = useState('');
@@ -13,6 +14,7 @@ const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
         if (acarreo) {
             setCliente(acarreo.cliente);
             setTelefono(acarreo.telefono);
+            setEmail(acarreo.email || '');
             setOrigen(acarreo.origen);
             setDestino(acarreo.destino);
             setFecha(acarreo.fecha);
@@ -21,6 +23,7 @@ const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
         } else {
             setCliente('');
             setTelefono('');
+            setEmail('');
             setOrigen('');
             setDestino('');
             setFecha('');
@@ -31,7 +34,7 @@ const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!cliente || !telefono || !origen || !destino || !fecha || !vehiculo || !costo) {
+        if (!cliente || !telefono || !email || !origen || !destino || !fecha || !vehiculo || !costo) {
             return alert('Todos los campos son obligatorios');
         }
 
@@ -39,6 +42,7 @@ const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
             id: acarreo?.id || null,
             cliente,
             telefono,
+            email,
             origen,
             destino,
             fecha,
@@ -53,8 +57,8 @@ const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
         }
 
         if (agregarFavorito) {
-            agregarFavorito({ cliente, telefono });
-        }
+            agregarFavorito({ cliente, telefono, email, origen, destino, fecha, vehiculo, costo: parseFloat(costo) });
+        }   
     };
 
     return (
@@ -74,6 +78,13 @@ const Formulario = ({ agregarAcarreo, acarreo, agregarFavorito }) => {
                     className="border p-2 rounded"
                     value={telefono}
                     onChange={(e) => setTelefono(e.target.value)}
+                />
+                <input
+                    type="text"
+                    placeholder="Correo electrónico del cliente"
+                    className="border p-2 rounded"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
                     type="text"

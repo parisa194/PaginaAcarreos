@@ -12,7 +12,7 @@ const App = () => {
   const [acarreando, setAcarreando] = useState(null);
   const [favoritos, setFavoritos] = useState([]);
 
-  // ✅ Cargar favoritos desde localStorage al iniciar
+  // Cargar favoritos desde localStorage al iniciar
   useEffect(() => {
     const favoritosGuardados = localStorage.getItem('favoritos');
     if (favoritosGuardados) {
@@ -40,12 +40,12 @@ const App = () => {
 
   const agregarFavorito = (cliente) => {
     const yaExiste = favoritos.some(
-      (f) => f.cliente === cliente.cliente && f.telefono === cliente.telefono
+      (f) => f.cliente === cliente.cliente && f.telefono === cliente.telefono && f.email === cliente.email && f.origen === cliente.origen && f.destino === cliente.destino && f.fecha === cliente.fecha && f.vehiculo === cliente.vehiculo && f.costo === cliente.costo
     );
     if (!yaExiste) {
       const nuevosFavoritos = [...favoritos, cliente];
       setFavoritos(nuevosFavoritos);
-      localStorage.setItem('favoritos', JSON.stringify(nuevosFavoritos)); // Guardar en localStorage
+      localStorage.setItem('favoritos', JSON.stringify(nuevosFavoritos)); 
       alert(`Cliente agregado a favoritos: ${cliente.cliente}`);
     }
   };
